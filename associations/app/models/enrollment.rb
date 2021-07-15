@@ -12,15 +12,14 @@ class Enrollment < ApplicationRecord
     validates :student_id, :course_id, presence: true
     validates :student_id, uniqueness: { scope: :course_id }
 
-
-    has_many :users,
+    belongs_to :user,
         primary_key: :id,
         foreign_key: :student_id,
         class_name: :User
 
-    has_many :courses,
+    belongs_to :course,
         primary_key: :id,
         foreign_key: :course_id,
-        class_name: :Course
-
+        class_name: :Course   
 end
+ 
