@@ -12,15 +12,16 @@
 class Course < ApplicationRecord
     validates :name, uniqueness: true
 
-    belongs_to :students,
+    belongs_to :prereq,
         primary_key: :id, 
         foreign_key: :prereq_id,
-        class_name: :User  
+        class_name: :Course,
+        optional: true  
 
-    belongs_to :user,
-        primary_key: :id, 
-        foreign_key: :instructor_id,
-        class_name: :User
+    # belongs_to :user,
+    #     primary_key: :id, 
+    #     foreign_key: :instructor_id,
+    #     class_name: :User
 
     has_many :enrollments,
         primary_key: :id,
